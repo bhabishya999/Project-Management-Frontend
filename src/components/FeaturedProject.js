@@ -17,6 +17,7 @@ const FeaturedProjects = () => {
         category: ""
     });
     const [page, setPage] = useState(1);
+    const [totalPages, setTotalPages] = useState(1); // Added totalPages state
     const isFetching = useRef(false);
 
     useEffect(() => {
@@ -83,6 +84,7 @@ const FeaturedProjects = () => {
                 setProjects((prevProjects) =>
                     currentPage === 1 ? result.data.data : [...prevProjects, ...result.data.data]
                 );
+                setTotalPages(result.data.pagination.totalPages); // Set totalPages here
                 if (shouldShowToast) {
                     toast.success("Projects loaded successfully!");
                 }
@@ -165,7 +167,9 @@ const FeaturedProjects = () => {
                 ))}
             </div>
             <div className="load-more">
-                <button className="load-more-btn" onClick={handleLoadMore}>Load More</button>
+                {page < totalPages && (
+                    <button className="load-more-btn" onClick={handleLoadMore}>Load More</button>
+                )}
             </div>
             <CreateProjectModal
                 isOpen={isModalOpen}

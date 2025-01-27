@@ -57,15 +57,29 @@ const CreateProjectModal = ({ isOpen, onRequestClose, onSubmit }) => {
                     </label>
                     <label>
                         Category:
-                        <input type="text" name="category" value={formData.category} onChange={handleChange} required className="large-input" />
+                        <select name="category" value={formData.category} onChange={handleChange} required className="large-select">
+                            <option value="">Select Category</option>
+                            <option value="Research">Research</option>
+                            <option value="Education">Education</option>
+                            <option value="IT Project">IT Project</option>
+                        </select>
                     </label>
                     <label>
                         City:
-                        <input type="text" name="city" value={formData.city} onChange={handleChange} required className="large-input" />
+                        <select name="city" value={formData.city} onChange={handleChange} required className="large-select">
+                            <option value="">Select City</option>
+                            <option value="Kathmandu">Kathmandu</option>
+                            <option value="Lalitpur">Lalitpur</option>
+                            <option value="Bhaktapur">Bhaktapur</option>
+                        </select>
                     </label>
                     <label>
                         Project Type:
-                        <input type="text" name="type" value={formData.type} onChange={handleChange} required className="large-input" />
+                        <select name="type" value={formData.type} onChange={handleChange} required className="large-select">
+                            <option value="">Select Type</option>
+                            <option value="Personal">Personal</option>
+                            <option value="Work">Work</option>
+                        </select>
                     </label>
                     <div className="modal-buttons">
                         <button type="button" onClick={onRequestClose}>Cancel</button>
